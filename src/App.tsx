@@ -5,9 +5,10 @@ import { MessageBus } from '@podium/browser';
 
 function App() {
     const [username, setUsername] = useState<string>('');
-    const messageBus = new MessageBus();
+
 
     useEffect(() => {
+        const messageBus = new MessageBus();
         messageBus.subscribe(
             'testChannel',
             'testTopic',
