@@ -11,6 +11,7 @@ function App() {
         'testChannel',
         'testTopic',
         (event) => {
+            console.log("inside message subscribe", event.payload);
             const user = event.payload;
             setUsername(user as string);
         }
