@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import { MessageBus } from '@podium/browser';
 
@@ -7,17 +7,20 @@ function App() {
     const [username, setUsername] = useState<string>('');
     const messageBus = new MessageBus();
 
-    messageBus.subscribe(
-        'testChannel',
-        'testTopic',
-        (event) => {
-            console.log("inside message subscribe", event.payload);
-            const user = event.payload;
-            setUsername(user as string);
-        }
-    )
+    useEffect(() => {
+        messageBus.subscribe(
+            'testChannel',
+            'testTopic',
+            (event) => {
+                console.log("inside message subscribe", event.payload);
+                const user = event.payload;
+                setUsername(user as string);
+            }
+        );
 
-  return (
+    }, []);
+
+    return (
     <div className="App">
       <header className="App-header">
         <p>
