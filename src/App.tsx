@@ -3,8 +3,8 @@ import './App.css';
 import { MessageBus } from '@podium/browser';
 
 function App() {
-    const messageBus = new MessageBus();
     const [username, setUsername] = useState<string>('');
+    const messageBus = new MessageBus();
 
     messageBus.subscribe(
         'testChannel',
@@ -22,7 +22,7 @@ function App() {
           Really cool Dashboard coming soon!
         </p>
           <p>
-              Test: {username}
+              Message: {username}
           </p>
       </header>
     </div>
